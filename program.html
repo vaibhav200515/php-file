@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Programs - Units</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(244, 92, 67, 0.15), transparent 60%),
+                        radial-gradient(circle at 70% 70%, rgba(102, 126, 234, 0.15), transparent 60%);
+            animation: pulseBackground 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulseBackground {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-title {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header-subtitle {
+            color: #ffd700;
+            font-size: 18px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Unit Links Container */
+        .units-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Unit Card */
+        .unit-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            animation: slideInLeft 0.6s ease-out forwards;
+            overflow: hidden;
+        }
+
+        .unit-card:nth-child(1) {
+            animation-delay: 0.1s;
+            border-left: 4px solid #f443d9;
+        }
+
+        .unit-card:nth-child(2) {
+            animation-delay: 0.2s;
+            border-left: 4px solid #66eaac;
+        }
+
+        .unit-card:nth-child(3) {
+            animation-delay: 0.3s;
+            border-left: 4px solid #33b4eb;
+        }
+
+        .unit-card:nth-child(4) {
+            animation-delay: 0.4s;
+            border-left: 4px solid #4b79a2;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Shine Effect */
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .unit-card:hover::before {
+            left: 100%;
+        }
+
+        .unit-card:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Unit Link */
+        .unit-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Unit Icon */
+        .unit-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover .unit-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Unit Content */
+        .unit-content {
+            flex: 1;
+        }
+
+        .unit-number {
+            color: #00ccff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .unit-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover .unit-title {
+            letter-spacing: 2px;
+        }
+
+        /* Arrow Icon */
+        .arrow-icon {
+            color: white;
+            font-size: 24px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Glow Effect on Hover */
+        .unit-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .unit-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Decorative Elements */
+        .decoration {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 10%;
+            background: #f45c43;
+            animation-delay: 0s;
+        }
+
+        .decoration-2 {
+            bottom: 20%;
+            right: 10%;
+            background: #667eea;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .header-title {
+                font-size: 28px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .unit-card {
+                padding: 20px;
+            }
+
+            .unit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .unit-title {
+                font-size: 20px;
+            }
+
+            .unit-number {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-title">☕ Php Programs</div>
+            <div class="header-subtitle">Select a Unit to Begin</div>
+        </div>
+
+        <div class="units-container">
+            <!-- Unit 1 -->
+            <div class="unit-card">
+                <a href="2d.html" class="unit-link" target="center">
+                    <div class="unit-icon">📚</div>
+                    <div class="unit-content">
+                        <div class="unit-number">Chapter 01</div>
+                        <div class="unit-title">UNIT-1</div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+
+            <!-- Unit 2 -->
+            <div class="unit-card">
+                <a href="dc.html" class="unit-link" target="center">
+                    <div class="unit-icon">💡</div>
+                    <div class="unit-content">
+                        <div class="unit-number">Chapter 02</div>
+                        <div class="unit-title">UNIT-2</div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+
+            <!-- Unit 3 -->
+            <div class="unit-card">
+                <a href="trees.html" class="unit-link" target="center">
+                    <div class="unit-icon">🌳</div>
+                    <div class="unit-content">
+                        <div class="unit-number">Chapter 03</div>
+                        <div class="unit-title">UNIT-3</div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+
+            <!-- Unit 4 -->
+            <div class="unit-card">
+                <a href="fun.html" class="unit-link" target="center">
+                    <div class="unit-icon">⚙️</div>
+                    <div class="unit-content">
+                        <div class="unit-number">Chapter 04</div>
+                        <div class="unit-title">UNIT-4</div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

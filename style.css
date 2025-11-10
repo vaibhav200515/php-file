@@ -1,0 +1,278 @@
+/*.home{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+}
+
+.about{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+}
+
+.programs{
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+}*/
+.home, .about, .programs {
+  /* Basic Styling */
+  display: inline-block;
+  padding: 15px 20px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+  /* Border and Shadow Styling */
+  border-radius: 8px;  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+  /* Transition for Smooth Hover Effects */
+  transition: all 0.3s ease;
+}
+
+.home:hover, .about:hover, .programs:hover {
+  /* Hover Effects */
+  background-color: #333;     /* Slightly lighter background on hover */
+  color: #ffcc00;             /* Accent color for text on hover */
+  transform: scale(1.05);     /* Slight zoom effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+.home:active, .about:active, .programs:active {
+  /* Active (Click) Effects */
+  transform: scale(0.98);     /* Slight shrink effect on click */
+}
+
+.home a, .about a, .programs a {
+  /* Link Styling */
+  text-decoration: none;
+  color: inherit;             /* Links inherit the text color */
+}
+
+
+.d2array{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+.sr{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+.strings{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+.dc{
+  display: inline-block;
+  padding: 10px ;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+.fh{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+.fun{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+.funy{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.inherit{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.oop{
+  display: inline-block;
+  padding: 10px ;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+.searchy{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.sdy{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.dcy{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.df{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.dy{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.oover{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+.sd{
+  display: inline-block;
+  padding: 10px ;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+
+.str{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.sr{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.over{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+
+.tree{
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+}
+.vf{
+  display: inline-block;
+  padding: 10px ;
+  margin: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+
+}
+
+
+
+.code{
+  background-color:aliceblue
+}
+
+.output{
+  background-color: aliceblue;
+}

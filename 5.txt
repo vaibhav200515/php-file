@@ -1,0 +1,2 @@
+Square root of 16: 4
+2 raised to 4: 16

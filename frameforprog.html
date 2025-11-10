@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Programs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #66eac0 0%, #a24b9e 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Main Container */
+        .frame-wrapper {
+            display: flex;
+            height: 100vh;
+            padding: 15px;
+            gap: 15px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Frame Styling */
+        .frame-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out backwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .frame-container:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
+                        0 0 0 2px rgba(255, 255, 255, 0.3) inset;
+            transform: translateY(-2px);
+        }
+
+        /* Left Frame - Program List */
+        .left-frame {
+            flex: 0 0 30%;
+            animation-delay: 0.1s;
+        }
+
+        /* Center Frame - Code Display */
+        .center-frame {
+            flex: 0 0 40%;
+            animation-delay: 0.2s;
+        }
+
+        /* Right Frame - Output Display */
+        .right-frame {
+            flex: 0 0 30%;
+            animation-delay: 0.3s;
+        }
+
+        /* Frame Header */
+        .frame-header {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .frame-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .frame-icon {
+            font-size: 24px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .frame-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Status Indicator */
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #de4acf;
+            margin-left: auto;
+            box-shadow: 0 0 10px #60de4a;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* iframe Styling */
+        .frame-content {
+            width: 100%;
+            height: calc(100% - 57px);
+            border: none;
+            background: #1e1e1e;
+        }
+        
+        /* Style for center and right frames specifically */
+        .code, .output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        /* Decorative Corner Accents */
+        .corner-accent {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+            border-bottom-right-radius: 10px;
+        }
+
+        .frame-container:hover .corner-accent {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .frame-wrapper {
+                flex-direction: column;
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .left-frame,
+            .center-frame,
+            .right-frame {
+                flex: 1 1 auto;
+                min-height: 250px;
+            }
+
+            .frame-header {
+                padding: 12px 15px;
+            }
+
+            .frame-title {
+                font-size: 16px;
+            }
+
+            .frame-icon {
+                font-size: 20px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #66dfea 0%, #a24b7f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease-out 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-icon">☕</div>
+            <div class="loading-text">Loading Programs...</div>
+        </div>
+    </div>
+
+    <!-- Frame Layout -->
+    <div class="frame-wrapper">
+        <!-- Left Frame - Program List -->
+        <div class="frame-container left-frame">
+            <div class="corner-accent top-left"></div>
+            <div class="frame-header">
+                <div class="frame-icon">📋</div>
+                <div class="frame-title">PROGRAM LIST</div>
+                <div class="status-dot"></div>
+            </div>
+            <iframe src="program.html" name="left" class="frame-content"></iframe>
+            <div class="corner-accent bottom-right"></div>
+        </div>
+
+        <!-- Center Frame - Code Display -->
+        <div class="frame-container center-frame">
+            <div class="corner-accent top-left"></div>
+            <div class="frame-header">
+                <div class="frame-icon">💻</div>
+                <div class="frame-title">CODE EDITOR</div>
+                <div class="status-dot"></div>
+            </div>
+            <iframe name="center" class="frame-content code"></iframe>
+            <div class="corner-accent bottom-right"></div>
+        </div>
+
+        <!-- Right Frame - Output Display -->
+        <div class="frame-container right-frame">
+            <div class="corner-accent top-left"></div>
+            <div class="frame-header">
+                <div class="frame-icon">🖥️</div>
+                <div class="frame-title">OUTPUT</div>
+                <div class="status-dot"></div>
+            </div>
+            <iframe name="right" class="frame-content output"></iframe>
+            <div class="corner-accent bottom-right"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Length: 9
+Uppercase: HELLO PHP
+Lowercase: hello php
+Reversed: PHP olleH
